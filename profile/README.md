@@ -12,12 +12,14 @@ Android.
 
 Most of the code that runs them is closed. The parts that are useful on their own are open.
 
-### Infrastructure we built and run in production
+### Pulled out of the code that runs Tissue
 
 | Repo | What it does |
 |---|---|
-| [walship](https://github.com/tissue-systems/walship) | Ships committed libSQL WAL frames over HTTP to a warm replica on another machine. It's the replication behind every c3 database, pulled out into a crate of its own. Rust. |
+| [walship](https://github.com/tissue-systems/walship) | Ships committed libSQL WAL frames over HTTP to a warm replica on another machine. It's the replication behind every c3 database. Rust. |
 | [caddy-rqlite-storage](https://github.com/tissue-systems/caddy-rqlite-storage) | Caddy certificate storage on rqlite, so a fleet of Caddy servers shares one certificate store and any of them can answer an ACME challenge. Go. |
+| [ssrf-guard](https://github.com/tissue-systems/ssrf-guard) | An HTTP client for fetching URLs somebody else typed in. It checks each address before connecting and pins the connection to it, so a webhook or a link preview can't reach your private network. It's how Mast probes fetch your sites. Rust. |
+| [hoptrace](https://github.com/tissue-systems/hoptrace) | A path trace like `mtr --report`, run inside your process over an unprivileged ICMP socket. No root needed, on Linux and macOS, IPv4 and IPv6. Mast uses it for the trace on a failed check. Rust. |
 
 ### Sending pages to Mast
 
