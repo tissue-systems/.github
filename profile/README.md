@@ -20,6 +20,7 @@ Most of the code that runs them is closed. The parts that are useful on their ow
 | [caddy-rqlite-storage](https://github.com/tissue-systems/caddy-rqlite-storage) | Caddy certificate storage on rqlite, so a fleet of Caddy servers shares one certificate store and any of them can answer an ACME challenge. Go. |
 | [ssrf-guard](https://github.com/tissue-systems/ssrf-guard) | An HTTP client for fetching URLs somebody else typed in. It checks each address before connecting and pins the connection to it, so a webhook or a link preview can't reach your private network. It's how Mast probes fetch your sites. Rust. |
 | [hoptrace](https://github.com/tissue-systems/hoptrace) | A path trace like `mtr --report`, run inside your process over an unprivileged ICMP socket. No root needed, on Linux and macOS, IPv4 and IPv6. Mast uses it for the trace on a failed check. Rust. |
+| [stripe-poke](https://github.com/tissue-systems/stripe-poke) | The plumbing for Stripe webhooks that never loses one. It checks the signature, records an event only after your handler succeeds so Stripe's retry still counts, and delivers the state you derive through a queue that retries until the other side takes it. It came out of our billing gateway. Rust. |
 
 ### Sending pages to Mast
 
